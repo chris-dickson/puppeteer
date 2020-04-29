@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const Launcher = require('./Launcher');
+const {default: Launcher} = require('./Launcher');
 const {BrowserFetcher} = require('./BrowserFetcher');
 const Errors = require('./Errors');
 const DeviceDescriptors = require('./DeviceDescriptors');
@@ -37,7 +37,7 @@ module.exports = class {
   }
 
   /**
-   * @param {!(Launcher.LaunchOptions & Launcher.ChromeArgOptions & Launcher.BrowserOptions & {product?: string, extraPrefsFirefox?: !object})=} options
+   * @param {!(Puppeteer.LaunchOptions & Puppeteer.ChromeArgOptions & Puppeteer.BrowserOptions & {product?: string, extraPrefsFirefox?: !object})=} options
    * @return {!Promise<!Browser>}
    */
   launch(options = {}) {
@@ -47,7 +47,7 @@ module.exports = class {
   }
 
   /**
-   * @param {!(Launcher.BrowserOptions & {browserWSEndpoint?: string, browserURL?: string, transport?: !Puppeteer.ConnectionTransport}) & {product?: string}=} options
+   * @param {!(Puppeteer.BrowserOptions & {browserWSEndpoint?: string, browserURL?: string, transport?: !Puppeteer.ConnectionTransport}) & {product?: string}=} options
    * @return {!Promise<!Browser>}
    */
   connect(options) {
@@ -122,7 +122,7 @@ module.exports = class {
   }
 
   /**
-   * @param {!Launcher.ChromeArgOptions=} options
+   * @param {!Puppeteer.ChromeArgOptions=} options
    * @return {!Array<string>}
    */
   defaultArgs(options) {
@@ -135,7 +135,7 @@ module.exports = class {
 
   /**
   * @typedef {Object} BrowserFetcherOptions
-  * @property {('linux'|'mac'|'win32'|'win64')=} platform
+  * @property {('linux'|'win32'|'mac'|'win64')=} platform
   * @property {('chrome'|'firefox')=} product
   * @property {string=} path
   * @property {string=} host
